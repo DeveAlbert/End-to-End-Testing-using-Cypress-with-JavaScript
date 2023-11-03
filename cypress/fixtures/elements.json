@@ -1,0 +1,40 @@
+{
+  "standard": "standard_user",
+  "locked": "locked_out_user",
+  "problem": "problem_user",
+  "glitch": "performance_glitch_user",
+  "error": "error_user",
+  "visual": "visual_user",
+  "password": "secret_sauce",
+  "usernameField": "[data-test='username']",
+  "passwordField": "[data-test='password']",
+  "loginButton": "[data-test='login-button']",
+
+  "errorNotificationForWrongDetails": "[data-test='error']",
+
+  "inventorypageTitle": "#header_container > div.header_secondary_container > span",
+
+  "shoppingCartLink": "#shopping_cart_container > a",
+  "addSauceLabsBackpackToCart": "[data-test='add-to-cart-sauce-labs-backpack']",
+  "addToCartSauceLabsBikeLight": "[data-test='add-to-cart-sauce-labs-bike-light']",
+
+  "shoppingcartPageTitle": "#header_container > div.header_secondary_container > span",
+
+  "sauceLabsBackpackAddedToCart": "#item_4_title_link > div",
+  "sauceLabsBikelightAddedToCart": "#item_0_title_link > div",
+
+  "checkoutButton": "[data-test='checkout']",
+  "continueshoppingButton": "[data-test='continue-shopping']",
+
+  "checkoutPageTitle": "#header_container > div.header_secondary_container > span",
+
+  "firstnameField": "[data-test='firstName']",
+  "lastnameField": "[data-test='lastName']",
+  "zipcodeField": "[data-test='postalCode']",
+  "continueButton": "[data-test='continue']",
+  
+  "checkoutOverviewPageTitle": "#header_container > div.header_secondary_container > span",
+  "cancelCheckoutButton": "[data-test='cancel']",
+  "finishCheckoutButton": "[data-test='finish']",
+  "finishCheckoutPage": "#checkout_complete_container"
+}
