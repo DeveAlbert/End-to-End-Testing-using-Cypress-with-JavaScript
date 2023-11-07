@@ -25,6 +25,7 @@
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 import 'cypress-fill-command'
 import './login'
+import './inventorypage'
 import './shoppingcart'
 import './checkout'
 

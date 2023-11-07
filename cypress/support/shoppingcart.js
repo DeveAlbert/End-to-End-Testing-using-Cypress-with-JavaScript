@@ -1,22 +1,5 @@
-//create inventory page and move appropriate commands 
-Cypress.Commands.add('AddSauceLabsBikeLightToCart', () => {
-    cy.fixture('elements').then((locator) => {
-        cy.get(locator.addToCartSauceLabsBikeLight).should('be.visible').click();
-    })
-})
-
-Cypress.Commands.add('AddSauceLabsBackpackToCart', () => {
-    cy.fixture('elements').then((locator) => {
-        cy.get(locator.addSauceLabsBackpackToCart).should('be.visible').click();
-    })
-})
-
-
-Cypress.Commands.add('NavigateToCart', () => {
-    cy.fixture('elements').then((locator) => {
-        cy.get(locator.shoppingCartLink).should('be.visible').click()
-    })
-})
+//create inventory page and move appropriate commands
+//create command to remove products added to cart also 
 
 Cypress.Commands.add('VerifyShoppingcartPageTitle', () => {
     cy.fixture('elements').then((locator) => {
