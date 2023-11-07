@@ -36,5 +36,8 @@
   "checkoutOverviewPageTitle": "#header_container > div.header_secondary_container > span",
   "cancelCheckoutButton": "[data-test='cancel']",
   "finishCheckoutButton": "[data-test='finish']",
-  "finishCheckoutPage": "#checkout_complete_container"
+  "finishCheckoutPage": "#checkout_complete_container",
+  
+  "menuButton": "#react-burger-menu-btn",
+  "logoutButton": "#logout_sidebar_link"
 }
