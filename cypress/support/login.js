@@ -1,30 +1,20 @@
-Cypress.Commands.add('Login', (username) => {
+Cypress.Commands.add('LoginWithValidDetails', (username) => {
     cy.fixture('elements').then((locator) => {
         cy.get(locator.usernameField).should('be.visible').fill(username)
         cy.get(locator.passwordField).should('be.visible').fill(locator.password)
-        cy.get(locator.loginButton).should('be.visible').click();
+        cy.get(locator.loginButton).should('be.visible').click()
+        cy.url().should('include', "/inventory.html");
     })
 })
 
-/*
 
-Cypress.Commands.add('UnsuccessfulLoginForEmptyDetails', (username) => {
+Cypress.Commands.add('LoginWithInvalidDetails', (username, password) => {
     cy.fixture('elements').then((locator) => {
-        
+        cy.get(locator.usernameField).should('be.visible').fill(username)
+        cy.get(locator.passwordField).should('be.visible').fill(password)
+        cy.get(locator.loginButton).should('be.visible').click()
+        cy.url().should('not.include', 'https://www.saucedemo.com/inventory.html')
     })
-})
-*/
-
-Cypress.Commands.add('verifySuccessfulLogin', () => {
-    cy.location("pathname").should("eq", "/inventory.html")
-})
-
-Cypress.Commands.add('verifyUnsuccessfulLogin', () => {
-    cy.fixture('elements').then((locator) => {
-        cy.location("pathname").should("not.eq", "/inventory.html")
-    })
-
-
 })
 
 

@@ -2,70 +2,59 @@ describe('login to application under test', () => {
 
   it('should login as a standard user', () => {
     cy.fixture('elements').then((locator) => {
-      cy.Login(locator.standard)
+      cy.LoginWithValidDetails(locator.standard)
     })
   })
 
-
-  it('should login as a locked out user', () => {
+  it('should not login as a locked out user', () => {
     cy.fixture('elements').then((locator) => {
-      cy.Login(locator.locked)
+      cy.LoginWithInvalidDetails(locator.locked, 'secret_sauce')
     })
   })
-
 
   it('should login as a problem user', () => {
     cy.fixture('elements').then((locator) => {
-      cy.Login(locator.problem)
+      cy.LoginWithValidDetails(locator.problem)
     })
   })
-
 
   it('should login as a performance glitch user', () => {
     cy.fixture('elements').then((locator) => {
-      cy.Login(locator.glitch)
+      cy.LoginWithValidDetails(locator.glitch)
     })
   })
 
-
-  it('should login as a error user', () => {
+  it('should login as an error user', () => {
     cy.fixture('elements').then((locator) => {
-      cy.Login(locator.error)
+      cy.LoginWithValidDetails(locator.error)
     })
   })
-
 
   it('should login as a visual user', () => {
     cy.fixture('elements').then((locator) => {
-      cy.Login(locator.visual)
+      cy.LoginWithValidDetails(locator.visual)
     })
   })
 
-  it.skip('should verify successful login', () => {
+  it('should not login with valid username and invalid password', () => {
     cy.fixture('elements').then((locator) => {
-      cy.Login(locator.standard)
+      cy.LoginWithInvalidDetails(locator.standard, 'secrets_sauce')
     })
-    cy.verifySuccessfulLogin()
-    
   })
 
-  it.only('should not login user entering incorrect details', () => {
+  it('should not login with invalid username and valid password', () => {
     cy.fixture('elements').then((locator) => {
-      cy.Login('jjjj')
-      cy.verifyUnsuccessfulLogin()
+      cy.LoginWithInvalidDetails('invalidusername', 'secret_sauce')
     })
   })
 
-  /*
-  it.only('should give an error to user for no details provided', () => {
+  it('should not login with invalid username and invalid password', () => {
     cy.fixture('elements').then((locator) => {
-      cy.Login()
-      cy.verifyUnsuccessfulLogin()
+      cy.LoginWithInvalidDetails('invalidusername', 'secrets_sauce')
     })
   })
-  */
- 
-
-
 
 })
+
+
+
