@@ -38,19 +38,19 @@ describe('login to application under test', () => {
 
   it('should not login with valid username and invalid password', () => {
     cy.fixture('elements').then((locator) => {
-      cy.LoginWithInvalidDetails(locator.standard, 'secrets_sauce')
+      cy.LoginWithInvalidDetails(locator.standard, locator.invalidPassword)
     })
   })
 
   it('should not login with invalid username and valid password', () => {
     cy.fixture('elements').then((locator) => {
-      cy.LoginWithInvalidDetails('invalidusername', 'secret_sauce')
+      cy.LoginWithInvalidDetails(locator.invalidUsername, locator.validPassword)
     })
   })
 
   it('should not login with invalid username and invalid password', () => {
     cy.fixture('elements').then((locator) => {
-      cy.LoginWithInvalidDetails('invalidusername', 'secrets_sauce')
+      cy.LoginWithInvalidDetails(locator.invalidUsername, locator.invalidPassword)
     })
   })
 
