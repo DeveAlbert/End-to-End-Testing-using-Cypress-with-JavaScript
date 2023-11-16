@@ -25,6 +25,7 @@
   "sauceLabsBackpackAddedToCart": "#item_4_title_link > div",
   "sauceLabsBikelightAddedToCart": "#item_0_title_link > div",
 
+  
   "checkoutButton": "[data-test='checkout']",
   "continueshoppingButton": "[data-test='continue-shopping']",
 
