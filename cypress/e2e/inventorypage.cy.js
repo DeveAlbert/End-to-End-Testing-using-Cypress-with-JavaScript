@@ -1,24 +1,28 @@
 describe('Inventory Page', () => {
 
-    it.only('should add sauceLabs bike light to cart', () => {
-      cy.fixture('elements').then((locator) => {
-        cy.Login(locator.standard)
-        cy.addSauceLabsBikeLightToCart()
+  beforeEach(() => {
+    cy.fixture('elements').then((locator) => {
+      Cypress.on('uncaught:exception', () => {
+        return "Error caught by exception";
       })
+      cy.LoginWithValidDetails(locator.standard)
     })
-  
-    it('should add saucelabs backpack to cart', () => {
-      cy.fixture('elements').then((locator) => {
-        cy.Login(locator.standard)
-        cy.addSauceLabsBackpackToCart()
-      })
-    })
-  
-    it('should navigate to cart', () => {
-      cy.fixture('elements').then((locator) => {
-        cy.Login(locator.standard)
-        cy.NavigateToCart()
-      })
-    })
-  
+  })
+
+
+  it('should add Sauce Labs Backpack to cart', () => {
+    cy.AddProductToCart('Sauce Labs Backpack')
+  })
+
+  it('should add Sauce Labs Bike Light to cart', () => {
+    cy.AddProductToCart('Sauce Labs Bike Light')
+  })
+
+  it('should remove Sauce Labs Bike Light from cart', () => {
+    cy.AddProductToCart('Sauce Labs Bike Light')
+    cy.RemoveProductFromCart('Sauce Labs Bike Light')
+  })
+
+
+
 })
