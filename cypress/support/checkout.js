@@ -1,9 +1,9 @@
-Cypress.Commands.add('ViewProductDetailsAddedToCart', (productDesc) => {
+Cypress.Commands.add('ViewProductDetailsAddedToCart', () => {
     cy.fixture('elements').then((locator) => {
         cy.get(locator.sauceLabsBackpackDetails)
             .invoke('text').then((sauceLabsBackpackDetails) => {
                 const sauceLabsBackpackDetailsText = sauceLabsBackpackDetails
-                expect(sauceLabsBackpackDetailsText).to.include(productDesc)
+                expect(sauceLabsBackpackDetailsText).to.include('carry.allTheThings() with the sleek, streamlined Sly Pack that melds uncompromising style with unequaled laptop and tablet protection.')
             })
     })
 })
