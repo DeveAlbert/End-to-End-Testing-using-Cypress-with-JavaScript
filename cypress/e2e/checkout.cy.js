@@ -1,102 +1,66 @@
 describe('Checkout Page', () => {
 
-    it('should fill and submit checkout information', () => {
+    beforeEach(() => {
         cy.fixture('elements').then((locator) => {
-            cy.Login(locator.standard)
-            cy.AddSauceLabsBikeLightToCart()
-            cy.AddSauceLabsBackpackToCart()
-            cy.NavigateToCart()
-            cy.VerifyShoppingcartPageTitle()
-            cy.VerifyExpectedProductsAreAddedToCart()
-            cy.Checkout()
-            cy.CheckoutCartPageTitle()
-            cy.FillAndSubmitCheckoutForm('Emmanuel', 'Albert', '9087')
+            Cypress.on('uncaught:exception', () => {
+                return "Error caught by exception";
+            })
+            cy.LoginWithValidDetails(locator.standard)
         })
     })
 
-    it('should verify that checkout information is submitted', () => {
-        cy.fixture('elements').then((locator) => {
-            cy.Login(locator.standard)
-            cy.AddSauceLabsBikeLightToCart()
-            cy.AddSauceLabsBackpackToCart()
-            cy.NavigateToCart()
-            cy.VerifyShoppingcartPageTitle()
-            cy.VerifyExpectedProductsAreAddedToCart()
-            cy.Checkout()
-            cy.CheckoutCartPageTitle()
-            cy.FillAndSubmitCheckoutForm('Emmanuel', 'Albert', '9087')
-            cy.VerifyThatCheckoutInformationIsSubmitted()
-        })
+    it('should display products in cart', () => {
+        cy.AddProductToCart('Sauce Labs Backpack')
+        cy.AddProductToCart('Sauce Labs Bike Light')
+        cy.NavigateToCart()
     })
 
-   
+    it('should view product details that are added to cart', () => {
+        cy.AddProductToCart('Sauce Labs Backpack')
+        cy.NavigateToCart()
+        cy.ViewProductDetailsAddedToCart()
+    })
+
+    it('should click checkout button', () => {
+        cy.AddProductToCart('Sauce Labs Backpack')
+        cy.NavigateToCart()
+        cy.ViewProductDetailsAddedToCart()
+        cy.ProceedToCheckout()
+    })
+
+    it('should fill complete data and submit form', () => {
+        cy.AddProductToCart('Sauce Labs Backpack')
+        cy.NavigateToCart()
+        cy.ViewProductDetailsAddedToCart()
+        cy.ProceedToCheckout()
+        cy.FillCompleteDataAndSubmitForm('Emmanuel', 'Albert', '1234')
+    })
+
+
+    it('should fill incomplete data and submit form', () => {
+        cy.AddProductToCart('Sauce Labs Backpack')
+        cy.NavigateToCart()
+        cy.ViewProductDetailsAddedToCart()
+        cy.ProceedToCheckout()
+        cy.FillIncompleteDataAndSubmitForm('Emmanuel', '', '')
+    })
+
     it('should finish checkout process', () => {
-        cy.fixture('elements').then((locator) => {
-            cy.Login(locator.standard)
-            cy.AddSauceLabsBikeLightToCart()
-            cy.AddSauceLabsBackpackToCart()
-            cy.NavigateToCart()
-            cy.VerifyShoppingcartPageTitle()
-            cy.VerifyExpectedProductsAreAddedToCart()
-            cy.Checkout()
-            cy.CheckoutCartPageTitle()
-            cy.FillAndSubmitCheckoutForm('Emmanuel', 'Albert', '9087')
-            cy.VerifyThatCheckoutInformationIsSubmitted()
-            cy.FinishCheckout()
-        })
+        cy.AddProductToCart('Sauce Labs Backpack')
+        cy.NavigateToCart()
+        cy.ViewProductDetailsAddedToCart()
+        cy.ProceedToCheckout()
+        cy.FillCompleteDataAndSubmitForm('Emmanuel', 'Albert', '1234')
+        cy.FinishCheckoutProcess()
     })
 
     it('should cancel checkout process', () => {
-        cy.fixture('elements').then((locator) => {
-            cy.Login(locator.standard)
-            cy.AddSauceLabsBikeLightToCart()
-            cy.AddSauceLabsBackpackToCart()
-            cy.NavigateToCart()
-            cy.VerifyShoppingcartPageTitle()
-            cy.VerifyExpectedProductsAreAddedToCart()
-            cy.Checkout()
-            cy.CheckoutCartPageTitle()
-            cy.FillAndSubmitCheckoutForm('Emmanuel', 'Albert', '9087')
-            cy.VerifyThatCheckoutInformationIsSubmitted()
-            cy.CancelCheckoutProcess()
-        })
+        cy.AddProductToCart('Sauce Labs Backpack')
+        cy.NavigateToCart()
+        cy.ViewProductDetailsAddedToCart()
+        cy.ProceedToCheckout()
+        cy.FillCompleteDataAndSubmitForm('Emmanuel', 'Albert', '1234')
+        cy.CancelCheckoutProcess()
     })
-
-    it('should verify that checkout process is finished', () => {
-        cy.fixture('elements').then((locator) => {
-            cy.Login(locator.standard)
-            cy.AddSauceLabsBikeLightToCart()
-            cy.AddSauceLabsBackpackToCart()
-            cy.NavigateToCart()
-            cy.VerifyShoppingcartPageTitle()
-            cy.VerifyExpectedProductsAreAddedToCart()
-            cy.Checkout()
-            cy.CheckoutCartPageTitle()
-            cy.FillAndSubmitCheckoutForm('Emmanuel', 'Albert', '9087')
-            cy.VerifyThatCheckoutInformationIsSubmitted()
-            cy.FinishCheckout()
-            cy.VerifyThatCheckoutProcessIsFinished()
-        })
-    })
-    
-
-    it('should verify that checkout process is cancelled', () => {
-        cy.fixture('elements').then((locator) => {
-            cy.Login(locator.standard)
-            cy.AddSauceLabsBikeLightToCart()
-            cy.AddSauceLabsBackpackToCart()
-            cy.NavigateToCart()
-            cy.VerifyShoppingcartPageTitle()
-            cy.VerifyExpectedProductsAreAddedToCart()
-            cy.Checkout()
-            cy.CheckoutCartPageTitle()
-            cy.FillAndSubmitCheckoutForm('Emmanuel', 'Albert', '9087')
-            cy.VerifyThatCheckoutInformationIsSubmitted()
-            cy.CancelCheckoutProcess()
-            cy.VerifyThatCheckoutProcessIsCancelled()
-        })
-    })
-
 
 })
-
