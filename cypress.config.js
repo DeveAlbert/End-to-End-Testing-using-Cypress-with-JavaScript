@@ -6,7 +6,7 @@ module.exports = defineConfig({
     defaultCommandTimeout: 30000,
     viewportHeight: 900,
     viewportWidth: 1400,
-    projectId: "cfpn5d",
+    projectId: "emjm2h",
     watchForFileChanges: false,
     chromeWebSecurity: false,
     setupNodeEvents(on, config) {
