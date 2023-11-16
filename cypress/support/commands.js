@@ -28,6 +28,7 @@ import './login'
 import './inventorypage'
 import './shoppingcart'
 import './checkout'
+import './logout'
 
 
 
