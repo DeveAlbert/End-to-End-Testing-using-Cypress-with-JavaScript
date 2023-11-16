@@ -26,7 +26,6 @@
 import 'cypress-fill-command'
 import './login'
 import './inventorypage'
-import './shoppingcart'
 import './checkout'
 import './logout'
 
